@@ -54,6 +54,7 @@
  </div>
  <div class="bar hidden" id="bar-done">
   <button class="primary" id="keep">↓ Keep this creature (.egg)</button>
+  <button id="remix">🧬 Breed it at the Cabinet ↗</button>
   <button id="again">📸 Snap another</button>
  </div>
 
@@ -161,6 +162,7 @@ $('snap').onclick=snap;
 $('cancel').onclick=()=>{ stopCam(); show('idle'); };
 $('again').onclick=()=>{ show('idle'); openCam(); };
 $('keep').onclick=()=>{ if(!current)return; const blob=new Blob([JSON.stringify(current,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=(current.title||'snapshot').toLowerCase()+'-'+current.id+'.egg'; a.click(); };
+$('remix').onclick=()=>{ if(current) window.open('https://kody-w.github.io/rapp-static-apis/hologram/#remix='+b64url(JSON.stringify(current))); };
 show('idle');
 </script>
 </body></html>
